@@ -6,9 +6,9 @@
 //  Copyright © 2020 신한섭. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-final class ViewModel: NSObject {
+final class ViewModel {
     private(set) var state = State(editingStyle: .none, sortedIntegers: [1, 2, 3]) {
         didSet {
             callback(state)
@@ -30,26 +30,4 @@ final class ViewModel: NSObject {
     func removeInteger(at indexPath: IndexPath) {
         state.editingStyle = .delete(indexPath)
     }
-}
-
-extension ViewModel: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return state.sortedIntegers.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.description(), for: indexPath)
-        cell.textLabel?.text = state.text(at: indexPath)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard editingStyle == .delete else { return }
-        removeInteger(at: indexPath)
-    }
-
 }

@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     fileprivate var viewModel: ViewModel?
+    fileprivate var dataSource = DataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,9 @@ class ViewController: UIViewController {
             }
         }
         
-        tableView.dataSource = viewModel
+        dataSource.viewModel = viewModel
+        
+        tableView.dataSource = dataSource
     }
 
     @objc func addNewInteger() {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A536AB1124792DD900C3F000 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1024792DD900C3F000 /* State.swift */; };
 		A536AB1324792E2300C3F000 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1224792E2300C3F000 /* ViewModel.swift */; };
+		A536AB152479383F00C3F000 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB142479383F00C3F000 /* DataSource.swift */; };
 		A5AE562E24716DE700C8AF20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE562D24716DE700C8AF20 /* AppDelegate.swift */; };
 		A5AE563024716DE700C8AF20 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE562F24716DE700C8AF20 /* SceneDelegate.swift */; };
 		A5AE563224716DE700C8AF20 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE563124716DE700C8AF20 /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		A536AB1024792DD900C3F000 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		A536AB1224792E2300C3F000 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		A536AB142479383F00C3F000 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		A5AE562A24716DE700C8AF20 /* PRACTICEMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PRACTICEMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AE562D24716DE700C8AF20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5AE562F24716DE700C8AF20 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				A5AE563B24716DE800C8AF20 /* Info.plist */,
 				A536AB1024792DD900C3F000 /* State.swift */,
 				A536AB1224792E2300C3F000 /* ViewModel.swift */,
+				A536AB142479383F00C3F000 /* DataSource.swift */,
 			);
 			path = PRACTICEMVVM;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A536AB152479383F00C3F000 /* DataSource.swift in Sources */,
 				A536AB1324792E2300C3F000 /* ViewModel.swift in Sources */,
 				A5AE563224716DE700C8AF20 /* ViewController.swift in Sources */,
 				A5AE562E24716DE700C8AF20 /* AppDelegate.swift in Sources */,
