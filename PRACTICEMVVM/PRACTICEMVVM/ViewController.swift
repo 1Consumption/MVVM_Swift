@@ -10,47 +10,35 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    fileprivate var model = [1, 2, 3]
     @IBOutlet weak var tableView: UITableView!
+    fileprivate var viewModel: ViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.description())
         let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewInteger))
         navigationItem.rightBarButtonItem = addButtonItem
-        tableView.dataSource = self
+        
+        viewModel = ViewModel { [unowned self] (state) in
+            switch state.editingStyle {
+            case .none:
+                self.tableView.reloadData()
+            case let .insert(_, indexPath):
+                self.tableView.beginUpdates()
+                self.tableView.insertRows(at: [indexPath], with: .automatic)
+                self.tableView.endUpdates()
+            case let .delete(indexPath):
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.endUpdates()
+            }
+        }
+        
+        tableView.dataSource = viewModel
     }
 
     @objc func addNewInteger() {
-        let number = Int(arc4random_uniform(10))
-        model.append(number)
-        model.sort()
-        tableView.beginUpdates()
-        tableView.insertRows(at: [IndexPath(row: model.firstIndex(of: number)!, section: 0)], with: .automatic)
-        tableView.endUpdates()
+        viewModel?.addNewInteger()
     }
 
-}
-
-extension ViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.description(), for: indexPath)
-        cell.textLabel?.text = "\(model[indexPath.row])"
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard editingStyle == .delete else { return }
-        model.remove(at: indexPath.row)
-        tableView.beginUpdates()
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        tableView.endUpdates()
-    }
 }
